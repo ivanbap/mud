@@ -1,0 +1,137 @@
+/* --- SEÇÃO FAQ COMPLETA (ANIMAÇÃO SUAVE) --- */
+.faq-bg {
+    background-color: #481C1E;
+    padding-top: 80px;
+}
+
+.container-faq {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+}
+
+.texto-faq {
+    font-size: 20px;
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 30px;
+}
+
+.faq-item { 
+    margin-bottom: 15px;
+}
+
+.faq-question {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px; /* Bordas arredondadas por padrão */
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    transition: background 0.3s ease, border-radius 0.3s ease;
+    position: relative;
+    z-index: 2; /* Garante que fique acima da resposta */
+}
+
+.faq-question:hover {
+    background-color: #f9f9f9;
+}
+
+.icon {
+    font-size: 24px;
+    font-weight: 300;
+    transition: transform 0.4s ease;
+}
+
+.faq-answer {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 0px 0px 10px 10px;
+    margin-top: -10px; /* Sobreposição leve para evitar frestas */
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    
+    /* MÁGICA DA ANIMAÇÃO */
+    max-height: 0;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer p {
+    color: #444;
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    /* O padding aqui dentro impede o "pulo" no fechamento */
+    padding: 30px 40px 30px 40px; 
+}
+
+/* --- ESTADO ATIVO (QUANDO ABERTO) --- */
+
+.faq-item.active .faq-answer {
+    max-height: 500px; /* Valor alto o suficiente para o texto */
+}
+
+.faq-item.active .faq-question {
+    border-radius: 10px 10px 0px 0px; /* Retira o arredondado de baixo ao abrir */
+}
+
+.faq-item.active .icon {
+    transform: rotate(45deg); /* Gira o + para virar um x */
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 1000px) {
+    .container-faq {
+        padding-bottom: 60px;
+    }
+    .faq-question {
+        font-size: 16px;
+        padding: 20px 30px;
+    }
+    .texto-faq {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 750px) {
+    .faq-question {
+        width: 95%;
+        padding: 18px 20px;
+        font-size: 15px;
+    }
+    .faq-answer {
+        width: 95%;
+    }
+    .faq-answer p {
+        font-size: 14px;
+        padding: 20px 20px 25px 20px;
+    }
+    .texto-faq {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    .faq-bg {
+        padding-top: 40px;
+    }
+}

@@ -1,0 +1,143 @@
+/* --- SEÇÃO FOOTER --- */
+.footer-bg {
+    background-color: #000;
+}
+
+.footer {
+    max-width: 1200px; /* Mantendo o padrão das outras seções */
+    margin: 0 auto;
+    padding: 80px 40px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between; /* Distribui as 3 colunas igualmente */
+    gap: 60px;
+    align-items: start;
+}
+
+.titulo-contato {
+    margin-bottom: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 42px;
+    line-height: 1.1;
+    font-style: italic;
+    font-weight: 100;
+}
+
+.whats-info, .insta-info, .tiktok-info {
+    margin-bottom: 25px;
+}
+
+.whats-info a, .insta-info a, .tiktok-info a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    transition: opacity 0.3s;
+}
+
+.whats-info a:hover, .insta-info a:hover, .tiktok-info a:hover {
+    opacity: 0.8;
+}
+
+.texto-info {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+}
+
+/* --- COLUNA ATENDIMENTO --- */
+.atendimento .info-atendimento {
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.atendimento .texto-atendimento, 
+.atendimento .texto-atendimento1 {
+    color: #b3b3b3; /* Cinza levemente mais claro para leitura no preto */
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 30px;
+}
+
+/* --- COLUNA MAPA --- */
+.mapbox iframe {
+    width: 100%; /* Ocupa o espaço da coluna */
+    max-width: 360px;
+    height: 240px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* --- RESPONSIVIDADE (TABLET) --- */
+@media (max-width: 1000px) {
+    .footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 20px;
+        padding: 60px 30px;
+    }
+
+    .mapbox {
+        grid-column: 1 / span 2;
+        width: 100%;
+    }
+
+    .mapbox iframe {
+        max-width: 100%; /* Mapa expande no tablet */
+        height: 300px;
+    }
+    .contato, .atendimento {
+        margin: 0 auto;
+    }
+}
+
+/* --- RESPONSIVIDADE (CELULAR) --- */
+@media (max-width: 600px) {
+    .footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .footer > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .titulo-contato {
+        font-size: 36px;
+    }
+
+    .whats-info a, .insta-info a, .tiktok-info a {
+        flex-direction: column; /* Ícone em cima do texto no celular */
+        gap: 8px;
+        text-align: center;
+    }
+
+    .texto-info {
+        text-align: center;
+    }
+
+    .mapbox {
+        grid-column: 1;
+    }
+
+    /* Linha divisória sutil entre seções no mobile */
+    .tiktok-info::after {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 1px;
+        background: #333;
+        margin: 40px auto 0 auto;
+    }
+}
