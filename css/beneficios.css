@@ -10,16 +10,8 @@
     padding-bottom: 100px;
     box-sizing: border-box;
 }
-
-.titulo-beneficios {
-    font-size: 64px;
-    line-height: 1.125;
-    font-family: "Roboto";
-    font-style: italic;
-    font-weight: 100;
-    padding-top: 60px;
-    text-align: center;
-    margin-bottom: 60px;
+.container-especialidades h2 {
+    padding: 0 20px;
 }
 
 .especialidades-container {

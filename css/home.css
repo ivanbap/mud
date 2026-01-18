@@ -4,16 +4,15 @@
     display: flex;
     justify-content: center; /* Alinha o menu à direita */
     align-items: center;
-    padding: 30px 40px;
     position: relative;
     z-index: 10;
+    margin-top: 60px;
 }
 
 .nav-menu {
     display: flex;
     gap: 40px;
     list-style: none;
-    margin-top: 40px;
 }
 
 .nav-menu li a {
@@ -23,18 +22,19 @@
     position: relative;
     display: inline-block;
     font-size: 16px;
+    font-style: italic;
 }
 
-.nav-menu a::after {
-    content: "";
-    display: block;
-    height: 2px;
-    width: 0px;
-    background-color: #fff;
-    margin-top: 4px;
-    transition: 0.3s;
-    position: absolute;
-}
+    .nav-menu a::after {
+        content: "";
+        display: block;
+        height: 2px;
+        width: 0px;
+        background-color: #fff;
+        margin-top: 4px;
+        transition: 0.3s;
+        position: absolute;
+    }
 
 .nav-menu a:hover:after {
     width: 100%;
@@ -146,7 +146,6 @@
 @media (max-width: 1000px) {
     .container-home {
         grid-template-columns: 1fr;
-        text-align: center;
         margin-top: 40px;
         gap: 50px;
     }
@@ -156,27 +155,19 @@
         flex-direction: column;
         align-items: center;
     }
-
-    .texto-home {
-        margin: 0 auto;
-    }
-
     .form {
         margin: 0 auto;
     }
-
     .titulo-home {
         font-size: 48px;
     }
 }
 
 @media (max-width: 700px) {
-    .home {
-    }
     .header {
-        display: flex;
-        justify-content: flex-end; 
-        padding: 20px 30px;
+        justify-content: flex-start;
+        padding-left: 20px;
+        margin-top: 20px;
     }
 
     .nav-menu li {
@@ -188,32 +179,36 @@
         border: none;
         background: transparent;
         cursor: pointer;
-        font-size: 24px;
-        color: #fff; /* Ajustado para aparecer no fundo roxo */
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 10px;/* Ajustado para aparecer no fundo roxo */
     }
 
     .mobile-menu {
-        position: absolute;
-        top: 80px;
-        left: 0;
+        display: block;        /* Sempre block para o fluxo funcionar */
+        position: relative;     /* Em vez de absolute, para empurrar o conteúdo */
         width: 100%;
         background-color: #ffffff;
         z-index: 1000;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        display: none;
+        overflow: hidden;       /* Essencial para esconder o conteúdo quando fechado */
+        max-height: 0;          /* Começa fechado */
+        transition: max-height 0.4s ease-in-out; /* O efeito de "empurrar" suave */
     }
 
+    /* Quando clicar, essa classe expande o menu */
     .mobile-menu.active {
-        display: block;
+        max-height: 300px;      /* Valor suficiente para cobrir seus links */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     .mobile-list li a {
         display: block;
-        padding: 20px;
-        text-align: center;
+        padding: 15px 40px;
         text-decoration: none;
         color: #000;
         border-bottom: 1px solid #eee;
         font-family: 'Poppins', sans-serif;
+        font-style: italic;
+        font-weight: 300;
     }
 }

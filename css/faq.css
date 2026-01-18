@@ -10,6 +10,9 @@
     padding-bottom: 100px;
     box-sizing: border-box;
 }
+.container-faq h2 {
+    padding: 0 20px;
+}
 
 .texto-faq {
     font-size: 20px;
