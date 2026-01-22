@@ -1,25 +1,19 @@
-/* --- SEÇÃO ESPECIALIDADES --- */
-.especialidades {
+.sobre {
     background-color: #d9d9d9;
     padding-top: 80px; /* Padrão de respiro do site */
 }
-
-.container-especialidades {
-    max-width: 1200px;
+.container-sobre {
+    max-width: 1260px;
     margin: 0 auto;
     padding-bottom: 100px;
     box-sizing: border-box;
 }
-.container-especialidades h2 {
-    padding: 0 20px;
-}
 
-.especialidades-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px; /* Gap uniforme para um visual mais limpo */
+.sobre-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
     padding: 0 30px;    
-    align-items: stretch; /* Garante que todos os cards da mesma linha tenham a mesma altura */
 }
 
 .item {
@@ -61,11 +55,11 @@
 /* --- RESPONSIVIDADE --- */
 
 @media (max-width: 1000px) {
-    .container-especialidades {
+    .container-sobre {
         padding-bottom: 60px;
     }
     
-    .especialidades-container {
+    .sobre-container {
         gap: 20px;
     }
 
@@ -75,12 +69,12 @@
 }
 
 @media (max-width: 700px) {
-    .especialidades-container {
+    .sobre-container {
         grid-template-columns: 1fr; /* Coluna única no mobile */
         padding: 0 20px;
     }
 
-    .container-especialidades {
+    .container-sobre {
         padding-bottom: 40px;
     }
     
@@ -100,7 +94,7 @@
 }
 
 @media (max-width: 500px) {
-    .especialidades {
+    .sobre {
         padding-top: 40px;
     }
 }

@@ -1,0 +1,107 @@
+.conteudo {
+    background-color: #481C1E;
+    padding: 80px 20px;
+}
+
+.container-conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.fluxo-conteudo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 50px;
+    counter-reset: passo;
+}
+
+.item-conteudo {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(194, 122, 122, 0.1);
+    padding: 40px 30px;
+    border-radius: 15px;
+    position: relative;
+    transition: all 0.4s ease;
+    color: #fff;
+    text-align: left;
+}
+.item-conteudo:nth-child(5) {
+  grid-column: span 2;
+}
+.item-conteudo:nth-child(5) .texto-conteudo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 40px;
+}
+
+.texto-conteudo {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+/* Número estilizado ao fundo */
+.item-conteudo::before {
+    counter-increment: passo;
+    content: counter(passo);
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 80px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05); /* Número bem discreto */
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.4s ease;
+}
+
+.item-conteudo h3 {
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1; /* Fica acima do número */
+}
+
+/* Efeito Hover */
+.item-conteudo:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.item-conteudo:hover::before {
+    color: rgba(255, 255, 255, 0.15);
+    top: 5px;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 1024px) {
+    .fluxo-conteudo {
+        grid-template-columns: 1fr 1fr; /* 2 colunas em tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .fluxo-conteudo {
+        grid-template-columns: 1fr; /* 1 coluna no celular */
+        gap: 15px;
+    }
+    .item-conteudo:nth-child(5) .texto-conteudo {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .item-conteudo:nth-child(5) {
+        grid-column: span 1 ;
+    }
+    
+    .item-conteudo {
+        padding: 30px 20px;
+        text-align: left;
+        justify-content: flex-start;
+    }
+}

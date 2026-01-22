@@ -1,0 +1,102 @@
+.para {
+    background-color: #d9d9d9;
+    padding-top: 80px; /* Padrão de respiro do site */
+}
+
+.container-para {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+}
+
+.para-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px; /* Gap uniforme para um visual mais limpo */
+    padding: 0 30px;    
+    align-items: stretch; /* Garante que todos os cards da mesma linha tenham a mesma altura */
+}
+
+.item {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 4px solid transparent; /* Preparo para o hover */
+}
+
+.item:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 12px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 4px solid #481C1E; /* Detalhe na cor da marca ao passar o mouse */
+}
+
+.item h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #481C1E; /* Destaque no título com a cor principal */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.item p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 300;
+    color: #333;
+    margin-top: 0; 
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 1000px) {
+    .container-para {
+        padding-bottom: 60px;
+    }
+    
+    .para-container {
+        gap: 20px;
+    }
+
+    .item h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    .para-container {
+        grid-template-columns: 1fr; /* Coluna única no mobile */
+        padding: 0 20px;
+    }
+
+    .container-para {
+        padding-bottom: 40px;
+    }
+    
+    .item {
+        padding: 30px 20px;
+    }
+
+    .item h3 {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .item p {
+        text-align: center;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .para {
+        padding-top: 40px;
+    }
+}
