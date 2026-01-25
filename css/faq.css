@@ -7,26 +7,23 @@
 .container-faq {
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 100px;
+    padding-bottom: 100px;  
     box-sizing: border-box;
-}
-.container-faq h2 {
-    padding: 0 20px;
 }
 
 .texto-faq {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.5;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);    
     text-align: center;
     margin-bottom: 50px;
     padding: 0 30px;
 }
 
 .faq-item { 
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .faq-question {
@@ -36,26 +33,32 @@
     background-color: #fff;
     color: #000;
     border: none;
-    padding: 24px 40px;
+    padding: 15px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    border-radius: 10px; /* Bordas arredondadas por padrão */
-    font-size: 18px;
+    border-radius: 8px; /* Bordas arredondadas por padrão */
+    font-size: 16px;
     font-weight: 500;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     transition: background 0.3s ease, border-radius 0.3s ease;
     position: relative;
     z-index: 2; /* Garante que fique acima da resposta */
 }
 
-
+.faq-question:hover {
+    background-color: #e4e4e4;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+}
 
 .icon {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 300;
-    transition: transform 0.4s ease;
+    color: #481C1E;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    pointer-events: none;
 }
 
 .faq-answer {
@@ -68,34 +71,38 @@
     overflow: hidden;
     position: relative;
     z-index: 1;
-    
     /* MÁGICA DA ANIMAÇÃO */
     max-height: 0;
     transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .faq-answer p {
-    color: #444;
-    font-size: 16px;
-    line-height: 1.6;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.7;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    /* O padding aqui dentro impede o "pulo" no fechamento */
-    padding: 10px 40px 30px 40px; 
+    padding: 8px 35px 15px 35px; /* Respiro interno */
+    margin: 0;
 }
-
 /* --- ESTADO ATIVO (QUANDO ABERTO) --- */
-
 .faq-item.active .faq-answer {
-    max-height: 500px; /* Valor alto o suficiente para o texto */
+    max-height: 500px; /* Espaço suficiente para o texto expandir */
+    opacity: 1;
+    visibility: visible;
+    border-top: 1px solid #eee; /* Linha sutil separando pergunta da resposta */
 }
 
 .faq-item.active .faq-question {
-    border-radius: 10px 10px 0px 0px; /* Retira o arredondado de baixo ao abrir */
+    border-radius: 12px 12px 0 0;
+    background-color: #fdfdfd;
+    box-shadow: none;
+    transform: none;
 }
 
 .faq-item.active .icon {
-    transform: rotate(45deg); /* Gira o + para virar um x */
+    transform: rotate(45deg); /* Transforma o + em X */
+    color: #888; /* Muda a cor do ícone quando aberto */
 }
 
 /* --- RESPONSIVIDADE --- */
@@ -116,23 +123,27 @@
 @media (max-width: 750px) {
     .faq-question {
         width: 95%;
-        padding: 18px 20px;
-        font-size: 15px;
+        padding: 12px 20px;
+        font-size: 14px;
     }
     .faq-answer {
         width: 95%;
     }
     .faq-answer p {
-        font-size: 14px;
-        padding: 20px 20px 25px 20px;
+        font-size: 12px;
+        padding: 6px 20px 10px 20px;
     }
     .texto-faq {
-        font-size: 16px;
+        font-size: 15px;
     }
 }
 
 @media (max-width: 500px) {
     .faq-bg {
         padding-top: 40px;
+    }
+    .faq-question {
+        text-align: left;
+        gap: 20px;
     }
 }
