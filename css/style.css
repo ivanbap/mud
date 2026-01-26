@@ -33,8 +33,8 @@ img {
     max-width: 100%;
 }
 
-.titulo-medio {
-    font-size: 64px;
+.titulo-medio,.titulo-medio1 {
+    font-size: 60px;
     line-height: 1.125;
     font-family: "Roboto";
     font-style: italic;
@@ -57,7 +57,7 @@ img {
 }
 
 @media (max-width: 1000px) {
-    .titulo-medio {
+    .titulo-medio,.titulo-medio1 {
     font-size: 56px;
     padding-top: 40px;
     margin-bottom: 40px;
@@ -65,8 +65,8 @@ img {
 
 }
 @media (max-width: 700px) {
-    .titulo-medio {
-    font-size: 48px;
+    .titulo-medio,.titulo-medio1 {
+    font-size: 40px;
     padding-top: 30px;
 }
 }

@@ -29,3 +29,28 @@ $(document).ready(function() {
         $('.btn-mobile i').addClass('fa-bars').removeClass('fa-xmark');
     });
 });
+
+if (window.innerWidth <= 1024) {
+        const observerOptions = {
+            root: null,
+            /* Ajustamos para que o item só ative quando estiver 
+               exatamente entre 48% e 52% da altura da tela (quase o centro exato)
+            */
+            rootMargin: '-48% 0px -50% 0px', 
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active-mobile');
+                } else {
+                    entry.target.classList.remove('active-mobile');
+                }
+            });
+        }, observerOptions);
+
+        const targets = document.querySelectorAll('#para .item p');
+        targets.forEach(p => observer.observe(p));
+    }
+;
