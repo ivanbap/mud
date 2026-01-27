@@ -52,5 +52,38 @@ if (window.innerWidth <= 1024) {
 
         const targets = document.querySelectorAll('#para .item p');
         targets.forEach(p => observer.observe(p));
+    };
+
+    //
+    document.addEventListener("DOMContentLoaded", function() {
+    // Só ativa o script se a tela for menor ou igual a 1024px (Mobile/Tablet)
+    if (window.innerWidth <= 1024) {
+        
+        const observerOptions = {
+            root: null, // Usa a janela do navegador como referência
+            /* Define uma 'linha' de ativação no centro da tela. 
+               O item acende quando chega próximo ao meio. */
+            rootMargin: '-35% 0px -40% 0px', 
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Adiciona a classe que criamos no CSS
+                    entry.target.classList.add('active-mobile');
+                } else {
+                    // Remove ao sair da zona central (efeito de foco único)
+                    entry.target.classList.remove('active-mobile');
+                }
+            });
+        }, observerOptions);
+
+        // Seleciona todos os itens da sua seção de conteúdo
+        const conteudos = document.querySelectorAll('.item-conteudo');
+        
+        conteudos.forEach(item => {
+            observer.observe(item);
+        });
     }
-;
+});

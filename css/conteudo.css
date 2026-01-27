@@ -1,3 +1,4 @@
+/* --- SEÇÃO CONTEÚDO MUD40+ --- */
 .conteudo {
     background-color: #481C1E;
     padding: 80px 20px;
@@ -14,7 +15,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 25px;
     margin-top: 50px;
-    counter-reset: passo;
 }
 
 .item-conteudo {
@@ -23,37 +23,53 @@
     padding: 40px 30px;
     border-radius: 15px;
     position: relative;
-    transition: all 0.4s ease;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Transição mais fluida */
     color: #fff;
     text-align: left;
+    overflow: hidden;
 }
+
+/* Regra especial para o 5º item (Videoaulas) */
 .item-conteudo:nth-child(5) {
-  grid-column: span 2;
+    grid-column: span 2;
 }
+
 .item-conteudo:nth-child(5) .texto-conteudo {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 40px;
+}
+
+.icone-etapa {
+    position: absolute;
+    top: 15px;        
+    left: 15px;
+    width: 70px;      
+    opacity: 0.1;     
+    transition: all 0.8s ease;
+    z-index: 0;
+    pointer-events: none; 
+    filter: brightness(0) invert(1); 
 }
 
 .texto-conteudo {
     margin-top: 20px;
     font-size: 14px;
     font-weight: 300;
+    position: relative;
+    z-index: 2;
 }
 
 /* Número estilizado ao fundo */
 .item-conteudo::before {
-    counter-increment: passo;
-    content: counter(passo);
     position: absolute;
     top: -10px;
     left: 10px;
     font-size: 80px;
     font-weight: 900;
-    color: rgba(255, 255, 255, 0.05); /* Número bem discreto */
+    color: rgba(255, 255, 255, 0.05);
     font-family: 'Poppins', sans-serif;
-    transition: all 0.4s ease;
+    transition: all 0.6s ease;
 }
 
 .item-conteudo h3 {
@@ -64,17 +80,44 @@
     margin-bottom: 15px;
     line-height: 1.4;
     position: relative;
-    z-index: 1; /* Fica acima do número */
+    z-index: 1;
 }
 
-/* Efeito Hover */
-.item-conteudo:hover {
+/* --- EFEITO HOVER (DESKTOP) --- */
+@media (hover: hover) {
+    .item-conteudo:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-5px);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .item-conteudo:hover .icone-etapa {
+        opacity: 0.25;      
+        top: 20px;          
+        transform: scale(1.1);
+    }
+
+    .item-conteudo:hover::before {
+        color: rgba(255, 255, 255, 0.15);
+        top: 5px;
+    }
+}
+
+/* --- EFEITO ACTIVE (MOBILE VIA JS) --- */
+/* Aplica o mesmo destaque do hover quando o JS ativa a classe no scroll */
+.item-conteudo.active-mobile {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-5px);
     border-color: rgba(255, 255, 255, 0.3);
 }
 
-.item-conteudo:hover::before {
+.item-conteudo.active-mobile .icone-etapa {
+    opacity: 0.25;      
+    top: 20px;              
+    transform: scale(1.1);
+}
+
+.item-conteudo.active-mobile::before {
     color: rgba(255, 255, 255, 0.15);
     top: 5px;
 }
@@ -82,26 +125,34 @@
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 1024px) {
     .fluxo-conteudo {
-        grid-template-columns: 1fr 1fr; /* 2 colunas em tablets */
+        grid-template-columns: 1fr 1fr;
     }
 }
 
 @media (max-width: 600px) {
     .fluxo-conteudo {
-        grid-template-columns: 1fr; /* 1 coluna no celular */
+        grid-template-columns: 1fr;
         gap: 15px;
     }
-    .item-conteudo:nth-child(5) .texto-conteudo {
-        display: grid;
-        grid-template-columns: 1fr;
-    }
+
     .item-conteudo:nth-child(5) {
-        grid-column: span 1 ;
+        grid-column: span 1;
+    }
+
+    .item-conteudo:nth-child(5) .texto-conteudo {
+        grid-template-columns: 1fr;
     }
     
     .item-conteudo {
         padding: 30px 20px;
         text-align: left;
-        justify-content: flex-start;
+    }
+
+    .icone-etapa {
+        width: 50px; 
+    }
+
+    .item-conteudo h3 {
+        font-size: 17px;
     }
 }
