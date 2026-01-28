@@ -89,40 +89,71 @@ if (window.innerWidth <= 1024) {
 });
 
 ///
+
+
+//alert form
+
+
+
+/////
 const formulario = document.querySelector('.form');
+const btn = document.querySelector('.btn-form');
+
+// Configuração do alerta estilo "Toast" (discreto e moderno)
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+});
 
 formulario.addEventListener('submit', (e) => {
-  e.preventDefault(); // Impede o site de recarregar
-  
-  const btn = document.querySelector('.btn-form');
-  btn.innerText = "Enviando..."; // Feedback visual
+  e.preventDefault();
+
+  // Feedback visual no botão
+  btn.innerText = "Enviando...";
   btn.disabled = true;
 
-  // Captura os dados do seu HTML
+  // Captura os dados do formulário
   const dados = {
     nome: document.querySelector('#nome').value,
     email: document.querySelector('#email').value,
     telefone: document.querySelector('#telefone').value
   };
 
-  // Envio para o Google
+  // Envio para a Planilha Google
   fetch('https://script.google.com/macros/s/AKfycby7LXfWDlglNIP7eR4NgEielCehEwlxqEEUHA9UrNJpl1jOETS4uyi3IBU_JFBaUZnLpg/exec', {
     method: 'POST',
-    mode: 'no-cors', // Evita erros de política de segurança
+    mode: 'no-cors', // Mantido para evitar bloqueios de CORS
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(dados)
   })
   .then(() => {
-    alert('Inscrição confirmada com sucesso!');
-    formulario.reset(); // Limpa o formulário
+    // Alerta de Sucesso
+    Toast.fire({
+      icon: 'success',
+      title: 'Inscrição confirmada!'
+    });
+    
+    formulario.reset(); // Limpa os campos
   })
   .catch(error => {
-    console.error('Erro ao enviar:', error);
-    alert('Houve um erro. Tente novamente.');
+    console.error('Erro:', error);
+    // Alerta de Erro
+    Toast.fire({
+      icon: 'error',
+      title: 'Erro ao enviar. Tente novamente.'
+    });
   })
   .finally(() => {
+    // Restaura o botão após o processo
     btn.innerText = "Confirmar Inscrição";
     btn.disabled = false;
   });
