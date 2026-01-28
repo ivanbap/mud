@@ -87,3 +87,43 @@ if (window.innerWidth <= 1024) {
         });
     }
 });
+
+///
+const formulario = document.querySelector('.form');
+
+formulario.addEventListener('submit', (e) => {
+  e.preventDefault(); // Impede o site de recarregar
+  
+  const btn = document.querySelector('.btn-form');
+  btn.innerText = "Enviando..."; // Feedback visual
+  btn.disabled = true;
+
+  // Captura os dados do seu HTML
+  const dados = {
+    nome: document.querySelector('#nome').value,
+    email: document.querySelector('#email').value,
+    telefone: document.querySelector('#telefone').value
+  };
+
+  // Envio para o Google
+  fetch('https://script.google.com/macros/s/AKfycby7LXfWDlglNIP7eR4NgEielCehEwlxqEEUHA9UrNJpl1jOETS4uyi3IBU_JFBaUZnLpg/exec', {
+    method: 'POST',
+    mode: 'no-cors', // Evita erros de política de segurança
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dados)
+  })
+  .then(() => {
+    alert('Inscrição confirmada com sucesso!');
+    formulario.reset(); // Limpa o formulário
+  })
+  .catch(error => {
+    console.error('Erro ao enviar:', error);
+    alert('Houve um erro. Tente novamente.');
+  })
+  .finally(() => {
+    btn.innerText = "Confirmar Inscrição";
+    btn.disabled = false;
+  });
+});
