@@ -1,6 +1,6 @@
 /* --- SEÇÃO FAQ COMPLETA (ANIMAÇÃO SUAVE) --- */
 .faq-bg {
-    background-color: #481C1E;
+    background-color: #fff;
     padding-top: 80px;
 }
 
@@ -11,17 +11,6 @@
     box-sizing: border-box;
 }
 
-.texto-faq {
-    font-size: 18px;
-    line-height: 1.5;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.8);    
-    text-align: center;
-    margin-bottom: 50px;
-    padding: 0 30px;
-}
-
 .faq-item { 
     margin-bottom: 15px;
 }
@@ -30,8 +19,8 @@
     width: 90%;
     max-width: 900px;
     margin: 0 auto;
-    background-color: #fff;
-    color: #000;
+    background-color: #481C1E;
+    color: #fff;
     border: none;
     padding: 15px 40px;
     display: flex;
@@ -40,7 +29,7 @@
     cursor: pointer;
     border-radius: 8px; /* Bordas arredondadas por padrão */
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     font-family: 'Poppins', sans-serif;
     transition: background 0.3s ease, border-radius 0.3s ease;
     position: relative;
@@ -48,14 +37,14 @@
 }
 
 .faq-question:hover {
-    background-color: #e4e4e4;
+    background-color: #481C1E;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
 }
 
 .icon {
     font-size: 26px;
     font-weight: 300;
-    color: #481C1E;
+    color: #fff;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-block;
     pointer-events: none;
@@ -65,7 +54,7 @@
     width: 90%;
     max-width: 900px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #481C1E;
     border-radius: 0px 0px 10px 10px;
     margin-top: -10px; /* Sobreposição leve para evitar frestas */
     overflow: hidden;
@@ -77,11 +66,11 @@
 }
 
 .faq-answer p {
-    color: #555;
+    color: #fff;
     font-size: 14px;
     line-height: 1.7;
     font-family: 'Poppins', sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     padding: 8px 35px 15px 35px; /* Respiro interno */
     margin: 0;
 }
@@ -95,14 +84,14 @@
 
 .faq-item.active .faq-question {
     border-radius: 12px 12px 0 0;
-    background-color: #fdfdfd;
+    background-color: #481C1E;
     box-shadow: none;
     transform: none;
 }
 
 .faq-item.active .icon {
     transform: rotate(45deg); /* Transforma o + em X */
-    color: #888; /* Muda a cor do ícone quando aberto */
+    color: #fff; /* Muda a cor do ícone quando aberto */
 }
 
 /* --- RESPONSIVIDADE --- */

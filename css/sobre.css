@@ -1,11 +1,10 @@
-/* --- SEÇÃO SOBRE (MINIMALIST FOCUS) --- */
 .sobre {
     background-color: #481C1E; /* Um cinza muito leve, quase branco */
     padding: 120px 20px;
 }
 
 .container-sobre {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 

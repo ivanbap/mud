@@ -10,17 +10,6 @@
     margin: 0 auto;
 }
 
-.titulo-medio {
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    color: #481C1E;
-    font-size: 32px;
-    margin-bottom: 60px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
 .para-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
