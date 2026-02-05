@@ -1,6 +1,6 @@
 /* --- SEÇÃO SOBRE (MINIMALIST FOCUS) --- */
 .sobre {
-    background-color: #f9f9f9; /* Um cinza muito leve, quase branco */
+    background-color: #481C1E; /* Um cinza muito leve, quase branco */
     padding: 120px 20px;
 }
 
@@ -26,7 +26,7 @@
 .sobre-destaque {
     font-family: 'Roboto', sans-serif;
     font-size: 28px;
-    color: #481C1E;
+    color: #fff;
     text-align: center;
     max-width: 800px;
     line-height: 1.4;
@@ -47,12 +47,12 @@
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     line-height: 1.8;
-    color: #444;
+    color: #d9d9d9;
     text-align: justify;
 }
 
 .sobre-col strong {
-    color: #481C1E;
+    color: #fff;
     font-weight: 600;
 }
 
@@ -69,7 +69,7 @@
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: #481C1E;
+    color: #fff;
     opacity: 0.6;
 }
 
