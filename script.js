@@ -10,25 +10,43 @@ faqItems.forEach(item => {
   });
 });
 
+//btn mobile
 $(document).ready(function() {
     // Abre e fecha o menu ao clicar no botão
     $('.btn-mobile').on('click', function(e) {
-        e.preventDefault();
+        e.stopPropagation(); // Impede que o clique no botão "suba" para o document
         $('.mobile-menu').toggleClass('active');
         
-        // Troca o ícone
         const icon = $(this).find('i');
         icon.toggleClass('fa-bars fa-xmark');
     });
 
-    // Fecha o menu automaticamente ao clicar em qualquer link (âncora)
+    // Fecha o menu automaticamente ao clicar em qualquer link
     $('.mobile-list a').on('click', function() {
-        $('.mobile-menu').removeClass('active');
-        
-        // Garante que o ícone volte a ser o "hambúrguer"
-        $('.btn-mobile i').addClass('fa-bars').removeClass('fa-xmark');
+        fecharMenu();
     });
+
+    // NOVA FUNÇÃO: Fecha ao clicar fora
+    $(document).on('click', function(e) {
+        const menu = $('.mobile-menu');
+        const btn = $('.btn-mobile');
+
+        // Se o clique NÃO foi no menu E NÃO foi no botão, e o menu está aberto
+        if (!menu.is(e.target) && menu.has(e.target).length === 0 && !btn.is(e.target) && btn.has(e.target).length === 0) {
+            if (menu.hasClass('active')) {
+                fecharMenu();
+            }
+        }
+    });
+
+    // Função auxiliar para evitar repetição de código
+    function fecharMenu() {
+        $('.mobile-menu').removeClass('active');
+        $('.btn-mobile i').addClass('fa-bars').removeClass('fa-xmark');
+    }
 });
+
+
 
 if (window.innerWidth <= 1024) {
         const observerOptions = {

@@ -1,94 +1,194 @@
-.sobre {
-    background-color: #481C1E; /* Um cinza muito leve, quase branco */
+/* --- SEÇÃO SOBRE PREMIUM (ESTILO EDITORIAL) --- */
+.sobre-premium {
+    background-color: #ffffff;
     padding: 120px 20px;
+    overflow: hidden;
 }
 
-.container-sobre {
+.container-sobre-novo {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Título centralizado com linha abaixo */
-.sobre .titulo-medio.preto {
-    text-align: center;
-    margin-bottom: 80px;
-    position: relative;
-}
-
-.sobre-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Frase Principal Grande */
-.sobre-destaque {
-    font-family: 'Roboto', sans-serif;
-    font-size: 28px;
-    color: #fff;
-    text-align: center;
-    max-width: 800px;
-    line-height: 1.4;
-    margin-bottom: 60px;
-    font-weight: 300;
-}
-
-/* Grid de duas colunas para o texto detalhado */
-.sobre-grid {
+.sobre-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    margin-bottom: 50px;
+    grid-template-columns: 1fr 1.2fr; /* Imagem levemente menor que o texto */
+    gap: 80px;
     align-items: center;
 }
 
-.sobre-col p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    line-height: 1.8;
-    color: #d9d9d9;
-    text-align: justify;
-}
-
-.sobre-col strong {
-    color: #fff;
-    font-weight: 600;
-}
-
-/* Detalhe Final (Tags) */
-.sobre-footer {
-    border-top: 1px solid rgba(72, 28, 30, 0.1);
-    padding-top: 30px;
+/* --- BLOCO DA IMAGEM E MOLDURA --- */
+.sobre-imagem .moldura-foto {
+    position: relative;
+    background: #f0f0f0;
+    /* Design assimétrico: Top-L, Top-R, Bottom-R, Bottom-L */
+    border-radius: 40px 40px 40px 0; 
     width: 100%;
-    text-align: center;
+    display: block;
+    line-height: 0; /* Remove espaços residuais de elementos inline */
 }
 
-.tag-mud {
-    font-family: 'Roboto', sans-serif;
+.sobre-imagem .moldura-foto img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Importante: manter o mesmo raio da moldura para a foto não vazar */
+    border-radius: 40px 40px 40px 0; 
+    object-fit: cover;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+/* BADGE: Alinhada sempre ao final da foto */
+.badge-experiencia {
+    position: absolute;
+    bottom: -15px; /* "Morde" a borda inferior */
+    right: -15px; /* "Morde" a borda lateral */
+    background: #481C1E;
+    color: white;
+    padding: 22px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 10px 10px 30px rgba(72, 28, 30, 0.2);
+    z-index: 10;
+    min-width: 120px;
+}
+.sobre-imagem .moldura-foto, 
+.sobre-imagem .moldura-foto img {
+    border-radius: 20px; /* Isso arredonda os 4 cantos igualmente */
+}
+
+.badge-experiencia span { 
+    font-size: 24px; 
+    font-weight: 700; 
+    display: block; 
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.badge-experiencia p { 
+    font-size: 11px; 
+    text-transform: uppercase; 
+    margin: 0; 
+    opacity: 0.9; 
+    letter-spacing: 1px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- BLOCO DE TEXTO --- */
+.label-superior {
+    font-family: 'Poppins', sans-serif;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: #fff;
+    color: #481C1E;
     opacity: 0.6;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.titulo-luxo {
+    font-family: 'Roboto', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.titulo-luxo span {
+    color: #481C1E;
+    font-style: italic;
+}
+
+.sobre-primeira-frase {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #481C1E;
+    line-height: 1.6;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.divisor-elegante {
+    width: 60px;
+    height: 3px;
+    background: #481C1E;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.texto-corpo p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 22px;
+}
+
+.texto-corpo strong {
+    color: #481C1E;
+}
+
+/* --- TAGS / FOOTER --- */
+.assinatura {
+    margin-top: 40px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.tag-premium {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #481C1E;
+    border: 1px solid rgba(72, 28, 30, 0.2);
+    padding: 8px 22px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.tag-premium:hover {
+    background: #481C1E;
+    color: #fff;
 }
 
 /* --- RESPONSIVIDADE --- */
-@media (max-width: 850px) {
-    .sobre {
-        padding: 80px 20px;
+@media (max-width: 1024px) {
+    .sobre-wrapper {
+        gap: 50px;
     }
+    .titulo-luxo { font-size: 36px; }
+}
 
-    .sobre-destaque {
-        font-size: 22px;
-        margin-bottom: 40px;
-    }
-
-    .sobre-grid {
+@media (max-width: 900px) {
+    .sobre-premium { padding: 80px 20px; }
+    
+    .sobre-wrapper {
         grid-template-columns: 1fr; /* Coluna única no mobile */
-        gap: 20px;
+        gap: 60px;
+    }
+    
+    .sobre-imagem {
+        max-width: 500px;
+        margin: 0 auto;
     }
 
-    .sobre-col p {
-        text-align: center; /* Centraliza no mobile para facilitar leitura */
+    .sobre-texto {
+        text-align: center;
+    }
+
+    .divisor-elegante {
+        margin: 0 auto 30px;
+    }
+
+    .assinatura {
+        justify-content: center;
+    }
+    
+    .badge-experiencia {
+        bottom: -10px;
+        right: -10px;
+        padding: 15px;
     }
 }
