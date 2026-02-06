@@ -16,7 +16,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 36px;
     font-weight: 200;
-    margin-bottom: 20px;
+    
 }
 
 /* --- BLOCO CONTATO E REDES --- */
@@ -99,19 +99,6 @@
 }
 .copyright-texto-mobile {
     display: none;
-}
-
-.local-info {
-    display: flex;
-    gap: 20px;
-    .texto-atendimento  {
-        margin-top: 2px;
-    }
-}
-
-.sema {
-    width: 30px;
-    height: 30px;
 }
 
 /* --- RESPONSIVIDADE (MOBILE) --- */
