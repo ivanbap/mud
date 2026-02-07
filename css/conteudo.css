@@ -1,166 +1,156 @@
-/* --- SEÇÃO CONTEÚDO MUD40+ --- */
-.conteudo {
-    background-color: #481C1E;
-    padding: 80px 20px;
+.conteudo-simetrico {
+    background-color: #481C1E; /* Vinho */
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
 }
 
-.container-conteudo {
+/* Título vazado ao fundo, mas centralizado */
+.titulo-fundo-estilizado {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 150px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container-limpo {
     max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
-}
-
-.fluxo-conteudo {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 25px;
-    margin-top: 50px;
-}
-
-.item-conteudo {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(194, 122, 122, 0.1);
-    padding: 40px 30px;
-    border-radius: 15px;
-    position: relative;
-    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Transição mais fluida */
-    color: #fff;
-    text-align: left;
-    overflow: hidden;
-}
-
-/* Regra especial para o 5º item (Videoaulas) */
-.item-conteudo:nth-child(5) {
-    grid-column: span 2;
-}
-
-.item-conteudo:nth-child(5) .texto-conteudo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 40px;
-}
-
-.icone-etapa {
-    position: absolute;
-    top: 15px;        
-    left: 15px;
-    width: 70px;      
-    opacity: 0.1;     
-    transition: all 0.8s ease;
-    z-index: 0;
-    pointer-events: none; 
-    filter: brightness(0) invert(1); 
-}
-
-.texto-conteudo {
-    margin-top: 20px;
-    font-size: 14px;
-    font-family: 'Poppins';
-    font-weight: 300;
-    position: relative;
-    z-index: 2;
-    i {
-        font-size: 10px;
-        font-weight: 600;
-        padding-right: 20px;
-    }
-}
-.texto-conteudo i{
-        
-}
-/* Número estilizado ao fundo */
-.item-conteudo::before {
-    position: absolute;
-    top: -10px;
-    left: 10px;
-    font-size: 80px;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.05);
-    font-family: 'Poppins', sans-serif;
-    transition: all 0.6s ease;
-}
-
-.item-conteudo h3 {
-    color: #fff;
-    font-size: 18px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    margin-bottom: 15px;
-    line-height: 1.4;
     position: relative;
     z-index: 1;
 }
 
-/* --- EFEITO HOVER (DESKTOP) --- */
-@media (hover: hover) {
-    .item-conteudo:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-5px);
-        border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .item-conteudo:hover .icone-etapa {
-        opacity: 0.25;      
-        top: 20px;          
-        transform: scale(1.1);
-    }
-
-    .item-conteudo:hover::before {
-        color: rgba(255, 255, 255, 0.15);
-        top: 5px;
-    }
+.sessao-header {
+    text-align: center;
+    margin-bottom: 80px;
 }
 
-/* --- EFEITO ACTIVE (MOBILE VIA JS) --- */
-/* Aplica o mesmo destaque do hover quando o JS ativa a classe no scroll */
-.item-conteudo.active-mobile {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.3);
+.titulo-principal {
+    font-size: 36px;
+    font-weight: 300;
+    font-style: italic;
 }
 
-.item-conteudo.active-mobile .icone-etapa {
-    opacity: 0.25;      
-    top: 20px;              
-    transform: scale(1.1);
+.destaque {
+    font-weight: 700;
+    border-bottom: 3px solid rgba(255,255,255,0.2);
 }
 
-.item-conteudo.active-mobile::before {
-    color: rgba(255, 255, 255, 0.15);
-    top: 5px;
+/* GRID SIMÉTRICO */
+.grid-simetrico {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
 }
 
-/* --- RESPONSIVIDADE --- */
-@media (max-width: 1024px) {
-    .fluxo-conteudo {
-        grid-template-columns: 1fr 1fr;
+
+.card-clean {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-total {
+    grid-column: span 2;
+}
+
+.badge-numero {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 36px;
+    font-weight: 700;
+    opacity: 0.3;
+    color: #fff;
+}
+
+.mini-icone {
+    width: 45px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 20px;
+}
+
+.card-clean h3 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.lista-itens p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.col-aula p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+}
+
+.lista-itens i {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.grade-aulas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* --- RESPONSIVIDADE SIMÉTRICA (MOBILE) --- */
+@media (max-width: 800px) {
+    .grid-simetrico {
+        grid-template-columns: 1fr; /* Tudo em uma coluna perfeita */
+        gap: 20px;
     }
-}
 
-@media (max-width: 600px) {
-    .fluxo-conteudo {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .item-conteudo:nth-child(5) {
+    .card-total {
         grid-column: span 1;
     }
 
-    .item-conteudo:nth-child(5) .texto-conteudo {
+    .card-clean {
+        padding: 30px;
+        text-align: center; /* Centraliza conteúdo no mobile */
+        align-items: center;
+    }
+
+    .lista-itens p {
+        justify-content: center;
+        font-size: 16px; /* Fonte maior para evitar zoom e melhorar leitura */
+    }
+
+    .grade-aulas {
         grid-template-columns: 1fr;
-    }
-    
-    .item-conteudo {
-        padding: 30px 20px;
-        text-align: left;
+        text-align: center;
     }
 
-    .icone-etapa {
-        width: 50px; 
+    .titulo-principal {
+        font-size: 28px;
     }
 
-    .item-conteudo h3 {
-        font-size: 17px;
+    .titulo-fundo-estilizado {
+        font-size: 80px;
+        top: 20px;
+    }
+    .badge-numero {
+        bottom: 10px;
+        right: 10px;
+        font-size: 30px;
     }
 }
