@@ -178,28 +178,51 @@
 
 @media (max-width: 700px) {
     .nav-menu li { display: none; }
-    .btn-mobile { display: block; background: transparent; border: none; color: #fff; font-size: 20px; cursor: pointer; }
+    .btn-mobile {
+            display: block;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            justify-content: flex-start;
+            padding-left: 20px;
+            margin-top: 20px;
+        }
 
     .mobile-menu {
-        display: block;
+        display: block;        /* Sempre block para o fluxo funcionar */
+        position: absolute;     /* Em vez de absolute, para empurrar o conteúdo */
         width: 100%;
         background-color: #ffffff;
-        overflow: hidden;
-        max-height: 0;
-        transition: max-height 0.4s ease-in-out;
-    }
+        z-index: 1000;
+        overflow: hidden;       /* Essencial para esconder o conteúdo quando fechado */
+        max-height: 0;          /* Começa fechado */
+        transition: max-height 0.4s ease-in-out; /* O efeito de "empurrar" suave */
+        }
 
     .mobile-menu.active {
         max-height: 300px;
     }
 
-    .mobile-list { list-style: none; padding: 0; }
-    .mobile-list li a {
-        display: block;
-        padding: 15px 40px;
-        text-decoration: none;
-        color: #000;
-        border-bottom: 1px solid #eee;
-        font-family: 'Poppins', sans-serif;
-    }
+    .mobile-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-list li a {
+            display: block;
+            padding: 15px 40px;
+            text-decoration: none;
+            color: #3E231C;
+            border-bottom: 1px solid #eee;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            
+        }
 }
