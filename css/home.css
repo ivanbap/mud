@@ -179,20 +179,20 @@
 @media (max-width: 700px) {
     .nav-menu li { display: none; }
     .btn-mobile {
-            display: block;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            font-size: 20px;
-            color: #fff;
-            margin-bottom: 20px;
-        }
+        display: block;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 20px;
+    }
 
-        .header {
-            justify-content: flex-start;
-            padding-left: 20px;
-            margin-top: 20px;
-        }
+    .header {
+        justify-content: flex-start;
+        padding-left: 20px;
+        margin-top: 20px;
+    }
 
     .mobile-menu {
         display: block;        /* Sempre block para o fluxo funcionar */
@@ -203,19 +203,17 @@
         overflow: hidden;       /* Essencial para esconder o conteúdo quando fechado */
         max-height: 0;          /* Começa fechado */
         transition: max-height 0.4s ease-in-out; /* O efeito de "empurrar" suave */
-        }
+    }
 
     .mobile-menu.active {
         max-height: 300px;
     }
-
     .mobile-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-
-        .mobile-list li a {
+    .mobile-list li a {
             display: block;
             padding: 15px 40px;
             text-decoration: none;
@@ -224,5 +222,14 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 300;
             
-        }
+    }
+    .subtitulo-home {
+        font-size: 30px;
+    }
+    .texto-home {
+        font-size: 16px;
+    }
+    .lista-clean li {
+        align-items: baseline;
+    }
 }
