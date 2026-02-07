@@ -140,7 +140,7 @@
     display: block;
     font-family: "Poppins", sans-serif;
     margin-bottom: 8px;
-    font-size: 13px;
+    font-size: 16px;
     text-transform: uppercase;
     color: #481C1E;
     font-weight: 600;
@@ -153,6 +153,7 @@
     border-radius: 10px;
     padding: 0 15px;
     font-family: "Poppins", sans-serif;
+    font-size: 14px;
 }
 
 .btn-form {
@@ -237,5 +238,11 @@
     }
     .form {
         padding: 20px;
+    }
+    .box-form label {
+        font-size: 14px;
+    }
+    .box-form input {
+        font-size: 13px;
     }
 }
