@@ -232,4 +232,10 @@
     .lista-clean li {
         align-items: baseline;
     }
+    .container-home {
+        padding: 60px 20px;
+    }
+    .form {
+        padding: 20px;
+    }
 }
