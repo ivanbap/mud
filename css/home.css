@@ -1,8 +1,12 @@
+/* CONFIGURAÇÕES GERAIS */
+.branco { color: #fff; }
+.roxo { background-color: #4b2d71; } 
+
 .header {
     max-width: 1280px;
     margin: 0 auto;
     display: flex;
-    justify-content: center; /* Alinha o menu à direita */
+    justify-content: center;
     align-items: center;
     position: relative;
     z-index: 10;
@@ -25,25 +29,22 @@
     font-style: italic;
 }
 
-    .nav-menu a::after {
-        content: "";
-        display: block;
-        height: 2px;
-        width: 0px;
-        background-color: #fff;
-        margin-top: 4px;
-        transition: 0.3s;
-        position: absolute;
-    }
-
-.nav-menu a:hover:after {
-    width: 100%;
-}
-.mobile-menu, .btn-mobile {
-    display: none;
+.nav-menu a::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0px;
+    background-color: #fff;
+    margin-top: 4px;
+    transition: 0.3s;
+    position: absolute;
 }
 
-/* HOME / HERO SECTION */
+.nav-menu a:hover:after { width: 100%; }
+
+.mobile-menu, .btn-mobile { display: none; }
+
+/* HERO SECTION */
 .home {
     min-height: 100vh;
     display: flex;
@@ -53,34 +54,28 @@
 .container-home {
     max-width: 1280px;
     width: 100%;
-    margin: auto; /* Centraliza verticalmente e horizontalmente */
+    margin: auto;
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr; /* Hierarquia visual: texto maior que o form */
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 80px;
     align-items: center;
     padding: 60px 40px;
 }
 
-.logo {
-    margin-bottom: 30px;
-}
-
-.titulo-home {
-    font-size: 64px;
-    line-height: 1.1;
-    font-family: "Roboto";
-    font-style: italic;
-    font-weight: 200;
-    margin-bottom: 30px;
-}
-
+/* TEXTO */
 .subtitulo-home {
-    font-size: 28px;
+    font-size: 42px;
     line-height: 1.2;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-style: italic;
     font-weight: 300;
     margin-bottom: 30px;
+}
+
+.destaque-elegante {
+    font-weight: 700;
+    color: #fff;
+    border-bottom: 3px solid #481C1E; 
 }
 
 .texto-home {
@@ -89,22 +84,57 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     max-width: 55ch;
+    margin-bottom: 35px;
 }
 
-/* FORMULÁRIO - Ajustado para parecer um componente sólido */
-.form {
-    background-color: #f2f2f2; /* Cinza um pouco mais claro para contraste */
-    padding: 45px;
-    border-radius: 20px;
+.lista-clean {
+    list-style: none;
+    padding: 0;
+}
+
+.lista-clean li {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+}
+
+/* FORMULÁRIO E CHAMADA */
+.contato-form {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 450px;
     justify-self: end;
+}
+
+.chamada-urgente-transparente {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    background: rgba(255, 255, 255, 0.1); 
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #481C1E; 
+}
+
+.form {
+    background-color: #f2f2f2;
+    padding: 45px;
+    border-radius: 20px;
+    width: 100%;
     box-shadow: 0 25px 50px rgba(0,0,0,0.3);
 }
 
-.box-form {
-    margin-bottom: 20px;
-}
+.logo { text-align: center; margin-bottom: 20px; }
+
+.box-form { margin-bottom: 20px; }
 
 .box-form label {
     display: block;
@@ -112,7 +142,6 @@
     margin-bottom: 8px;
     font-size: 13px;
     text-transform: uppercase;
-    letter-spacing: 1px;
     color: #481C1E;
     font-weight: 600;
 }
@@ -122,93 +151,49 @@
     height: 55px;
     border: 1px solid #ddd;
     border-radius: 10px;
-    background-color: #fff;
     padding: 0 15px;
     font-family: "Poppins", sans-serif;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.3s;
 }
-
 
 .btn-form {
     height: 60px;
-    background-color: #481C1E; /* Vinho para o botão brilhar */
+    background-color: #481C1E;
     border-radius: 10px;
     border: none;
     color: #fff;
     width: 100%;
     cursor: pointer;
-    font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-size: 16px;
     margin-top: 15px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(72, 28, 30, 0.3);
 }
 
-.btn-form:hover {
-    transform: translateY(-2px);
-}
-
+/* RESPONSIVIDADE */
 @media (max-width: 1000px) {
-    .container-home {
-        grid-template-columns: 1fr;
-        margin-top: 40px;
-        gap: 50px;
-    }
-
-    .info-home {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .form {
-        margin: 0 auto;
-    }
-    .titulo-home {
-        font-size: 48px;
-    }
+    .container-home { grid-template-columns: 1fr; gap: 50px; }
+    .info-home { text-align: center; }
+    .lista-clean li { justify-content: center; }
+    .contato-form { margin: 0 auto; }
 }
 
 @media (max-width: 700px) {
-    .header {
-        justify-content: flex-start;
-        padding-left: 20px;
-        margin-top: 20px;
-    }
-
-    .nav-menu li {
-        display: none;
-    }
-
-    .btn-mobile {
-        display: block;
-        border: none;
-        background: transparent;
-        cursor: pointer;
-        font-size: 20px;
-        color: #fff;
-        margin-bottom: 10px;/* Ajustado para aparecer no fundo roxo */
-    }
+    .nav-menu li { display: none; }
+    .btn-mobile { display: block; background: transparent; border: none; color: #fff; font-size: 20px; cursor: pointer; }
 
     .mobile-menu {
-        display: block;        /* Sempre block para o fluxo funcionar */
-        position: relative;     /* Em vez de absolute, para empurrar o conteúdo */
+        display: block;
         width: 100%;
         background-color: #ffffff;
-        z-index: 1000;
-        overflow: hidden;       /* Essencial para esconder o conteúdo quando fechado */
-        max-height: 0;          /* Começa fechado */
-        transition: max-height 0.4s ease-in-out; /* O efeito de "empurrar" suave */
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s ease-in-out;
     }
 
-    /* Quando clicar, essa classe expande o menu */
     .mobile-menu.active {
-        max-height: 300px;      /* Valor suficiente para cobrir seus links */
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        max-height: 300px;
     }
 
+    .mobile-list { list-style: none; padding: 0; }
     .mobile-list li a {
         display: block;
         padding: 15px 40px;
@@ -216,7 +201,5 @@
         color: #000;
         border-bottom: 1px solid #eee;
         font-family: 'Poppins', sans-serif;
-        font-style: italic;
-        font-weight: 300;
     }
 }
