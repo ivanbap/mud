@@ -1,6 +1,5 @@
-//btn faq
+//btn faq question
 const faqItems = document.querySelectorAll('.faq-item');
-
 faqItems.forEach(item => {
   const question = item.querySelector('.faq-question');
   
@@ -9,8 +8,9 @@ faqItems.forEach(item => {
     item.classList.toggle('active');
   });
 });
+//
 
-//btn mobile
+//btn menu mobile
 $(document).ready(function() {
     // Abre e fecha o menu ao clicar no botão
     $('.btn-mobile').on('click', function(e) {
@@ -45,9 +45,9 @@ $(document).ready(function() {
         $('.btn-mobile i').addClass('fa-bars').removeClass('fa-xmark');
     }
 });
+//
 
-
-
+//animação 'para quem' hover mobile
 if (window.innerWidth <= 1024) {
         const observerOptions = {
             root: null,
@@ -71,49 +71,9 @@ if (window.innerWidth <= 1024) {
         const targets = document.querySelectorAll('#para .item p');
         targets.forEach(p => observer.observe(p));
     };
+//
 
-    //
-    document.addEventListener("DOMContentLoaded", function() {
-    // Só ativa o script se a tela for menor ou igual a 1024px (Mobile/Tablet)
-    if (window.innerWidth <= 1024) {
-        
-        const observerOptions = {
-            root: null, // Usa a janela do navegador como referência
-            /* Define uma 'linha' de ativação no centro da tela. 
-               O item acende quando chega próximo ao meio. */
-            rootMargin: '-35% 0px -40% 0px', 
-            threshold: 0
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Adiciona a classe que criamos no CSS
-                    entry.target.classList.add('active-mobile');
-                } else {
-                    // Remove ao sair da zona central (efeito de foco único)
-                    entry.target.classList.remove('active-mobile');
-                }
-            });
-        }, observerOptions);
-
-        // Seleciona todos os itens da sua seção de conteúdo
-        const conteudos = document.querySelectorAll('.item-conteudo');
-        
-        conteudos.forEach(item => {
-            observer.observe(item);
-        });
-    }
-});
-
-///
-
-
-//alert form
-
-
-
-/////
+//formulario
 const formulario = document.querySelector('.form');
 const btn = document.querySelector('.btn-form');
 
@@ -129,6 +89,30 @@ const Toast = Swal.mixin({
     toast.addEventListener('mouseleave', Swal.resumeTimer)
   }
 });
+
+///mobile animação conteudo
+if (window.innerWidth <= 1024) {
+        const observerOptions = {
+            root: null,
+            // Foco centralizado: ativa quando o card passa pelo meio da tela
+            rootMargin: '-40% 0px -45% 0px', 
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active-mobile');
+                } else {
+                    entry.target.classList.remove('active-mobile');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-clean').forEach(item => {
+            observer.observe(item);
+        });
+    }
 
 formulario.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -176,4 +160,6 @@ formulario.addEventListener('submit', (e) => {
     btn.disabled = false;
   });
 });
+//final formulario
+
 

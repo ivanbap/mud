@@ -13,7 +13,6 @@ html, body {
     margin: 0px;
     font-family: "Montserrat", "Poppins", sans-serif;
     max-width: 100%;
-    overflow-x: hidden;
 }
 
 ul {
@@ -76,4 +75,54 @@ img {
     font-family: "Montserrat";
     font-weight: 500;
 }
+}
+#btnTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    width: 45px;
+    height: 45px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Estilo Meio Invisível */
+    background-color: rgba(0, 0, 0, 0.2); /* Bem clarinho */
+    color: rgba(255, 255, 255, 0.6); /* Seta meio transparente */
+    backdrop-filter: blur(4px); /* Efeito de vidro opcional */
+    
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    
+    /* Começa escondido */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+/* Quando o JS ativar a exibição */
+#btnTop.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Hover: Fica mais visível */
+#btnTop:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+    #btnTop {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
 }
