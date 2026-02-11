@@ -154,7 +154,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', function() {
     const btn = document.getElementById('btnFlutuante');
     // Aparece após rolar 500px
-    if (window.scrollY > 2500) {
+    if (window.scrollY > 1800) {
         btn.classList.add('mostrar');
     } else {
         btn.classList.remove('mostrar');
