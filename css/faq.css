@@ -136,3 +136,37 @@
         gap: 20px;
     }
 }
+
+.btn-flutuante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #481C1E;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 9999;
+    
+    /* Estado inicial transparente/escondido */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-flutuante.mostrar {
+    opacity: 0.6; /* Meio transparente como solicitado */
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.btn-flutuante.mostrar:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
