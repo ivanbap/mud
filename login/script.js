@@ -72,7 +72,7 @@ if(formLogin) {
                     timer: 1500, 
                     showConfirmButton: false 
                 }).then(() => {
-                    window.location.href = "curso.html";
+                    window.location.href = "../curso/curso.html";
                 });
             } else {
                 Swal.fire('Acesso Negado', 'E-mail não encontrado na base de dados.', 'error');

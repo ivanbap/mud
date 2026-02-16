@@ -34,7 +34,7 @@ body {
         .btn-form { 
             width: 100%; 
             padding: 15px; 
-            background: #000; 
+            background: #481C1E; 
             color: #fff; 
             border: none; 
             border-radius: 5px; 
@@ -43,7 +43,7 @@ body {
             transition: background 0.3s;
         }
         .btn-form:hover {
-            background: #333;
+            background: #5e2528;
         }
         .btn-form:disabled { 
             background: #666; 

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Área de Membros</title>
+    <style>
+        .bg-brand { background-color: #481C1E; }
+        .text-brand { color: #481C1E; }
+        .border-brand { border-color: #481C1E; }
+    </style>
+    <script>
+        // PROTEÇÃO DE PÁGINA (Bloqueia acesso sem login)
+        if (localStorage.getItem('curso_acesso') !== 'true') {
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <header class="bg-brand p-4 shadow-md text-white">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="font-bold tracking-widest italic">CURSO PREMIUM</h1>
+            
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2">
+                    <div id="user-initial" class="w-8 h-8 rounded-full bg-white text-brand flex items-center justify-center font-bold">A</div>
+                    <span id="user-name" class="text-sm font-medium hidden sm:inline">Carregando...</span>
+                </div>
+                <button onclick="fazerLogout()" class="text-xs bg-white/10 hover:bg-white/20 px-3 py-1 rounded border border-white/20 transition">
+                    Sair
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-8 px-4">
+        <div class="mb-8 text-center sm:text-left">
+            <h2 class="text-3xl font-bold text-brand">Bem-vindo à sua Área de Estudos</h2>
+            <p class="text-gray-500">Escolha um módulo abaixo para continuar assistindo.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 bg-black rounded-2xl overflow-hidden shadow-2xl aspect-video relative">
+                <iframe id="video-player" class="w-full h-full" src="https://www.youtube.com/embed/EXEMPLO" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+                <h3 class="font-bold text-brand mb-4 flex items-center">
+                    <span class="mr-2">📄</span> Materiais em PDF
+                </h3>
+                <div class="space-y-3">
+                    <a href="#" class="block p-3 bg-gray-50 hover:bg-gray-100 rounded-lg border-l-4 border-brand text-sm transition font-medium">
+                        Guia Completo do Módulo 01
+                    </a>
+                    <a href="#" class="block p-3 bg-gray-50 hover:bg-gray-100 rounded-lg border-l-4 border-brand text-sm transition font-medium">
+                        Checklist de Implementação
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Preencher nome do aluno ao carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            const nome = localStorage.getItem('aluno_nome') || "Aluno";
+            document.getElementById('user-name').innerText = `Olá, ${nome}!`;
+            document.getElementById('user-initial').innerText = nome.charAt(0).toUpperCase();
+        });
+
+        // Função de Logout
+        function fazerLogout() {
+            Swal.fire({
+                title: 'Sair da conta?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#481C1E',
+                confirmButtonText: 'Sim, sair',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.clear();
+                    window.location.href = "login.html";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
