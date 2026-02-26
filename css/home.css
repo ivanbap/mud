@@ -1,7 +1,9 @@
 /* CONFIGURAÇÕES GERAIS */
-.branco { color: #fff; }
-.roxo { background-color: #4b2d71; } 
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
+.branco { color: #fff; }
+
+/* HEADER (Preservado original) */
 .header {
     max-width: 1280px;
     margin: 0 auto;
@@ -44,7 +46,7 @@
 
 .mobile-menu, .btn-mobile { display: none; }
 
-/* HERO SECTION */
+/* HERO SECTION - REFORMULADA PARA ENCAIXE */
 .home {
     min-height: 100vh;
     display: flex;
@@ -58,33 +60,34 @@
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     gap: 80px;
-    align-items: center;
+    align-items: center; /* Centraliza verticalmente o texto com o form */
     padding: 60px 40px;
 }
 
-/* TEXTO */
 .subtitulo-home {
-    font-size: 42px;
-    line-height: 1.2;
+    font-size: 48px; /* Aumentado para maior autoridade */
+    line-height: 1.1;
     font-family: "Roboto", sans-serif;
-    font-style: italic;
-    font-weight: 300;
+    font-weight: 700; /* Peso aumentado para não parecer "solto" */
     margin-bottom: 30px;
 }
 
 .destaque-elegante {
     font-weight: 700;
     color: #fff;
+    font-style: italic;
     border-bottom: 3px solid #481C1E; 
 }
 
 .texto-home {
-    font-size: 18px;
+    font-size: 19px;
     line-height: 1.6; 
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
-    max-width: 55ch;
+    max-width: 50ch;
     margin-bottom: 35px;
+    border-left: 2px solid rgba(255,255,255,0.2); /* Linha âncora lateral */
+    padding-left: 20px;
 }
 
 .lista-clean {
@@ -102,31 +105,35 @@
     font-size: 18px;
 }
 
+.lista-clean i {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
 /* FORMULÁRIO E CHAMADA */
 .contato-form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 450px;
+    max-width: 500px;
     justify-self: end;
 }
 
-.chamada-urgente-transparente {
-    font-family: 'Poppins', sans-serif;
-    color: #fff;
-    font-size: 15px;
+.header-form-interno {
     text-align: center;
     margin-bottom: 20px;
-    line-height: 1.5;
-    background: rgba(255, 255, 255, 0.1); 
-    padding: 15px;
-    border-radius: 10px;
-    border-left: 4px solid #481C1E; 
+}
+
+.chamada-form {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
 }
 
 .form {
     background-color: #f2f2f2;
-    padding: 30px;
+    padding: 30px; /* Aumentado para dar mais "ar" ao form */
     border-radius: 20px;
     width: 100%;
     box-shadow: 0 25px 50px rgba(0,0,0,0.3);
@@ -140,10 +147,11 @@
     display: block;
     font-family: "Poppins", sans-serif;
     margin-bottom: 8px;
-    font-size: 16px;
+    font-size: 13px; /* Sutilmente menor para elegância */
     text-transform: uppercase;
     color: #481C1E;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 .box-form input {
@@ -167,13 +175,55 @@
     font-weight: 600;
     font-size: 16px;
     margin-top: 15px;
+    transition: 0.3s;
 }
 
-/* RESPONSIVIDADE */
+.btn-form:hover {
+    background-color: #351416;
+    transform: translateY(-2px);
+}
+
+.privacidade {
+    text-align: center;
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* RESPONSIVIDADE (Preservada e Refinada) */
 @media (max-width: 1000px) {
-    .container-home { grid-template-columns: 1fr; gap: 50px; }
-    .info-home { text-align: center; }
-    .lista-clean li { justify-content: center; }
+    .container-home { 
+        grid-template-columns: 1fr; 
+        gap: 50px; 
+        padding: 40px 20px;
+    }
+    
+    .info-home { 
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centraliza os blocos de texto */
+    }
+
+    .texto-home { 
+        margin: 0 auto 35px; 
+        border-left: none; 
+        padding-left: 0; 
+    }
+
+    /* AJUSTE SOLICITADO: Ícone à esquerda, mas lista centralizada no mobile */
+    .lista-clean {
+        display: inline-block; /* Permite que a lista seja centralizada como bloco */
+        text-align: left;      /* Garante que o conteúdo interno (ícone + texto) alinhe à esquerda */
+        margin: 0 auto;        /* Centraliza a lista inteira na tela */
+    }
+
+    .lista-clean li { 
+        justify-content: flex-start; /* Mantém ícone e texto alinhados à esquerda entre si */
+        width: 100%;
+        max-width: 400px; /* Evita que a lista fique larga demais no mobile */
+    }
+
     .contato-form { margin: 0 auto; }
 }
 
@@ -196,56 +246,37 @@
     }
 
     .mobile-menu {
-        display: block;        /* Sempre block para o fluxo funcionar */
-        position: absolute;     /* Em vez de absolute, para empurrar o conteúdo */
+        display: block;
+        position: absolute;
         width: 100%;
         background-color: #ffffff;
         z-index: 1000;
-        overflow: hidden;       /* Essencial para esconder o conteúdo quando fechado */
-        max-height: 0;          /* Começa fechado */
-        transition: max-height 0.4s ease-in-out; /* O efeito de "empurrar" suave */
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s ease-in-out;
     }
 
     .mobile-menu.active {
         max-height: 300px;
     }
     .mobile-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
     .mobile-list li a {
-            display: block;
-            padding: 15px 40px;
-            text-decoration: none;
-            color: #3E231C;
-            border-bottom: 1px solid #eee;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 300;
-            
+        display: block;
+        padding: 15px 40px;
+        text-decoration: none;
+        color: #3E231C;
+        border-bottom: 1px solid #eee;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 300;
     }
-    .subtitulo-home {
-        font-size: 30px;
-    }
-    .texto-home {
-        font-size: 16px;
-    }
-    .lista-clean li {
-        align-items: baseline;
-    }
-    .container-home {
-        padding: 60px 20px;
-    }
-    .form {
-        padding: 20px;
-    }
-    .box-form label {
-        font-size: 14px;
-    }
-    .box-form input {
-        font-size: 16px;
-    }
-    .box-form input::placeholder {
-        font-size: 13px;
-    }
+    .subtitulo-home { font-size: 32px; }
+    .texto-home { font-size: 16px; }
+    .container-home { padding: 40px 20px; }
+    .form { padding: 20px 20px; }
+    .box-form input { height: 45px; }
+    .lista-clean li { font-size: 16px;}
 }

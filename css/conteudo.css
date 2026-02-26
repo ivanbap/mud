@@ -69,8 +69,9 @@
 
     .card-clean:hover .badge-numero {
         opacity: 0.25;      
-        top: 20px;          
+        bottom: 20px;          
         transform: scale(1.1);
+        transition: all 0.3s;
     }
 }
 
@@ -81,7 +82,7 @@
 }
 .card-clean.active-mobile .badge-numero {
     opacity: 0.25;      
-    top: 20px;          
+    bottom: 20px;          
     transition: 0.5s;
 }
 
@@ -91,18 +92,12 @@
 
 .badge-numero {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    bottom: 20px;
+    right: 20px;
     font-size: 36px;
     font-weight: 700;
     opacity: 0.3;
     color: #fff;
-}
-
-.mini-icone {
-    width: 45px;
-    filter: brightness(0) invert(1);
-    margin-bottom: 20px;
 }
 
 .card-clean h3 {
@@ -179,8 +174,8 @@
     }
     
     .badge-numero {
-        bottom: auto; /* Mantendo o padrão original de posição superior */
-        top: 15px;
+        top: auto; /* Mantendo o padrão original de posição superior */
+        bottom: 15px;
         right: 15px;
         font-size: 28px;
     }
