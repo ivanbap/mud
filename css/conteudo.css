@@ -1,3 +1,4 @@
+/* --- SEÇÃO PRINCIPAL --- */
 .conteudo-simetrico {
     background-color: #481C1E; /* Vinho */
     padding: 100px 20px;
@@ -6,7 +7,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Título vazado ao fundo, mas centralizado */
+/* Título vazado ao fundo */
 .titulo-fundo-estilizado {
     position: absolute;
     top: 50px;
@@ -35,6 +36,7 @@
     font-size: 36px;
     font-weight: 300;
     font-style: italic;
+    color: #fff;
 }
 
 .destaque {
@@ -42,11 +44,16 @@
     border-bottom: 3px solid rgba(255,255,255,0.2);
 }
 
-/* GRID SIMÉTRICO */
+/* --- GRID EM DUAS COLUNAS --- */
 .grid-simetrico {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
     gap: 30px;
+}
+
+/* O card total precisa ocupar as duas colunas */
+.card-total {
+    grid-column: span 2;
 }
 
 .card-clean {
@@ -57,71 +64,55 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    /* Configuração da Animação (300px de distância) */
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                opacity 0.8s ease, 
+                background 0.4s ease, 
+                border-color 0.4s ease;
 }
 
-@media (hover: hover) {
-    .card-clean:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-5px);
-        border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .card-clean:hover .badge-numero {
-        opacity: 0.25;      
-        bottom: 20px;          
-        transform: scale(1.1);
-        transition: all 0.3s;
-    }
+/* Classes de Direção (300px) */
+.card-hidden-left {
+    transform: translateX(-300px);
 }
 
-.card-clean.active-mobile {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-.card-clean.active-mobile .badge-numero {
-    opacity: 0.25;      
-    bottom: 20px;          
-    transition: 0.5s;
+.card-hidden-right {
+    transform: translateX(300px);
 }
 
-.card-total {
-    grid-column: span 2;
+/* Classe Ativada pelo Scroll */
+.card-visible {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
 }
 
+/* --- ESTILOS INTERNOS DO CARD --- */
 .badge-numero {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 700;
     opacity: 0.3;
     color: #fff;
+    transition: all 0.3s ease;
 }
 
 .card-clean h3 {
     font-size: 20px;
     color: #fff;
     margin-bottom: 20px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
 }
 
-.lista-itens p {
+.lista-itens p, .col-aula p {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 10px;
     display: flex;
-    gap: 10px;
-    align-items: flex-start;
-}
-
-.col-aula p {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 10px;
-    display: flex; /* Adicionado para alinhar os checks da aula também */
     gap: 10px;
     align-items: flex-start;
 }
@@ -137,7 +128,21 @@
     gap: 20px;
 }
 
-/* --- RESPONSIVIDADE SIMÉTRICA (MOBILE) --- */
+/* --- INTERATIVIDADE (HOVER) --- */
+@media (hover: hover) {
+    .card-clean:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-5px) !important; /* Efeito de subir no hover */
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .card-clean:hover .badge-numero {
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
+}
+
+/* --- RESPONSIVIDADE (MOBILE 1 COLUNA) --- */
 @media (max-width: 800px) {
     .grid-simetrico {
         grid-template-columns: 1fr; 
@@ -150,18 +155,11 @@
 
     .card-clean {
         padding: 30px;
-        text-align: left; /* Alterado: alinha textos à esquerda */
-        align-items:center;/* Alterado: alinha o bloco à esquerda */
-    }
-
-    .lista-itens p, .col-aula p {
-        justify-content: flex-start; /* Alterado: checks sempre na esquerda */
-        font-size: 16px; 
+        align-items: flex-start;
     }
 
     .grade-aulas {
         grid-template-columns: 1fr;
-        text-align: left; /* Alterado: alinha aulas à esquerda */
     }
 
     .titulo-principal {
@@ -172,11 +170,9 @@
         font-size: 80px;
         top: 20px;
     }
-    
     .badge-numero {
-        top: auto; /* Mantendo o padrão original de posição superior */
-        bottom: 15px;
-        right: 15px;
+        bottom: 0px;
+        right: 10px;
         font-size: 28px;
     }
 }

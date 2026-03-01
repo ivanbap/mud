@@ -211,3 +211,43 @@ formulario.addEventListener('submit', (e) => {
 //final formulario
 
 
+
+///teste
+document.addEventListener("DOMContentLoaded", function() {
+    const cards = document.querySelectorAll('.card-clean');
+    let lastY = window.pageYOffset;
+
+    const observerOptions = {
+        threshold: 0.1, // Dispara com 10% de visibilidade
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        const currentY = window.pageYOffset;
+        const isScrollingDown = currentY > lastY;
+        
+        entries.forEach((entry) => {
+            if (entry.isIntersecting && isScrollingDown) {
+                // Ao DESCER e cruzar o elemento: anima para entrar
+                entry.target.classList.add('card-visible');
+            } 
+            else if (!entry.isIntersecting && !isScrollingDown) {
+                // Ao SUBIR e o elemento sair por BAIXO da tela: reseta para animar de novo
+                entry.target.classList.remove('card-visible');
+            }
+            // NOTA: Se subir e o elemento sair por CIMA, ele continua .card-visible
+        });
+        
+        lastY = currentY;
+    }, observerOptions);
+
+    cards.forEach((card, index) => {
+        if (index % 2 === 0) {
+            card.classList.add('card-hidden-left');
+        } else {
+            card.classList.add('card-hidden-right');
+        }
+        observer.observe(card);
+    });
+});
+
