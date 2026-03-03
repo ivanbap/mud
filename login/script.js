@@ -26,7 +26,7 @@ if(formInscricao && !formInscricao.id.includes('login')) {
 
         fetch(URL_GOOGLE, {
             method: 'POST',
-            mode: 'no-cors', // POST para Google Apps Script funciona melhor com no-cors
+            mode: 'no-cors', 
             body: JSON.stringify(dados)
         })
         .then(() => {
@@ -48,12 +48,11 @@ if(formLogin) {
         e.preventDefault();
         const btn = formLogin.querySelector('.btn-form');
         const emailInput = document.querySelector('#email-login');
-        const email = emailInput.value.trim(); // Limpa espaços extras
+        const email = emailInput.value.trim();
 
         btn.innerText = "Verificando...";
         btn.disabled = true;
 
-        // Adicionamos 'redirect: follow' para evitar o erro de conexão
         fetch(`${URL_GOOGLE}?email=${encodeURIComponent(email)}`, {
             method: 'GET',
             mode: 'cors',
@@ -65,15 +64,21 @@ if(formLogin) {
         })
         .then(data => {
             if(data.result === "autorizado") {
+                // --- ALTERAÇÕES AQUI ---
                 localStorage.setItem('curso_acesso', 'true');
+                localStorage.setItem('aluno_nome', data.nome); // SALVA O NOME DO PACIENTE
+
                 Swal.fire({ 
                     icon: 'success', 
-                    title: 'Acesso Liberado!', 
-                    timer: 1500, 
+                    title: `Bem-vindo, ${data.nome}!`, // MENSAGEM PERSONALIZADA
+                    text: 'Acesso liberado ao seu painel.',
+                    timer: 2000, 
                     showConfirmButton: false 
                 }).then(() => {
-                    window.location.href = "../curso/curso.html";
+                    // REDIRECIONA PARA O MENU DE MÓDULOS
+                    window.location.href = "../curso/curso.html"; 
                 });
+                // -----------------------
             } else {
                 Swal.fire('Acesso Negado', 'E-mail não encontrado na base de dados.', 'error');
             }
@@ -83,7 +88,7 @@ if(formLogin) {
             Swal.fire({
                 icon: 'error',
                 title: 'Erro de Conexão',
-                text: 'Não conseguimos validar seu acesso. Verifique sua internet ou se o script do Google está publicado como "Qualquer Pessoa".'
+                text: 'Não conseguimos validar seu acesso. Verifique se o script do Google está publicado como "Qualquer Pessoa".'
             });
         })
         .finally(() => {

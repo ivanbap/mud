@@ -5,81 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Área de Membros</title>
+    <title>Menu | Minha Nutri</title>
     <style>
         .bg-brand { background-color: #481C1E; }
         .text-brand { color: #481C1E; }
         .border-brand { border-color: #481C1E; }
+        .card-modulo:hover { transform: translateY(-5px); transition: all 0.3s ease; }
     </style>
     <script>
-        // PROTEÇÃO DE PÁGINA (Bloqueia acesso sem login)
+        // PROTEÇÃO DE ACESSO
         if (localStorage.getItem('curso_acesso') !== 'true') {
-            window.location.href = "login.html";
+            window.location.href = "../login/index.html";
         }
     </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
 
-    <header class="bg-brand p-4 shadow-md text-white">
+    <header class="bg-white border-b border-gray-200 p-4 sticky top-0 z-50 shadow-sm">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="font-bold tracking-widest italic">MUD 40+</h1>
+            <div class="flex items-center">
+                <img src="../img/mudlogo1.png" alt="Logo Nutri" class="h-12 w-auto object-contain">
+                </div>
             
             <div class="flex items-center space-x-4">
-                <div class="flex items-center space-x-2">
-                    <div id="user-initial" class="w-8 h-8 rounded-full bg-white text-brand flex items-center justify-center font-bold">A</div>
-                    <span id="user-name" class="text-sm font-medium hidden sm:inline">Carregando...</span>
+                <div class="text-right hidden sm:block">
+                    <p id="user-name" class="text-sm font-bold text-brand">Carregando...</p>
+                    <p class="text-xs text-gray-400">Plano Ativo</p>
                 </div>
-                <button onclick="fazerLogout()" class="text-xs bg-white/10 hover:bg-white/20 px-3 py-1 rounded border border-white/20 transition">
-                    Sair
+                <button onclick="fazerLogout()" class="bg-brand text-white px-5 py-2 rounded-full text-xs font-bold hover:opacity-90 transition shadow-md">
+                    SAIR
                 </button>
             </div>
         </div>
     </header>
 
-    <main class="container mx-auto py-8 px-4">
-        <div class="mb-8 text-center sm:text-left">
-            <h2 class="text-3xl font-bold text-brand">Bem-vindo à sua Área de Estudos</h2>
-            <p class="text-gray-500">Escolha um módulo abaixo para continuar assistindo.</p>
+    <main class="container mx-auto py-10 px-4">
+        <div class="mb-10 text-center">
+            <h2 class="text-3xl font-extrabold text-brand italic">Sua Jornada de Saúde</h2>
+            <p class="text-gray-500 mt-2">Selecione um módulo para começar seus estudos e preparos.</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div class="lg:col-span-2 bg-black rounded-2xl overflow-hidden shadow-2xl aspect-video relative">
-                <iframe id="video-player" class="w-full h-full" src="https://www.youtube.com/embed/EXEMPLO" frameborder="0" allowfullscreen></iframe>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                <h3 class="font-bold text-brand mb-4 flex items-center">
-                    <span class="mr-2">📄</span> Materiais em PDF
-                </h3>
-                <div class="space-y-3">
-                    <a href="#" class="block p-3 bg-gray-50 hover:bg-gray-100 rounded-lg border-l-4 border-brand text-sm transition font-medium">
-                        Guia Completo do Módulo 01
-                    </a>
-                    <a href="#" class="block p-3 bg-gray-50 hover:bg-gray-100 rounded-lg border-l-4 border-brand text-sm transition font-medium">
-                        Checklist de Implementação
-                    </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <a href="mod1/index.html" class="card-modulo bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 text-brand text-2xl">🥗</div>
+                    <h3 class="text-xl font-bold text-brand mb-2">Introdução e Mentalidade</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Entenda a base do seu novo estilo de vida e como organizar sua mente.</p>
                 </div>
+                <div class="mt-6 flex items-center text-xs font-bold text-brand uppercase tracking-wider">
+                    Acessar Módulo <span class="ml-2">→</span>
+                </div>
+            </a>
+
+            <a href="modulo2.html" class="card-modulo bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 text-brand text-2xl">🍳</div>
+                    <h3 class="text-xl font-bold text-brand mb-2">Receitas e Cardápios</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Sugestões práticas para o seu dia a dia com foco em nutrição real.</p>
+                </div>
+                <div class="mt-6 flex items-center text-xs font-bold text-brand uppercase tracking-wider">
+                    Acessar Módulo <span class="ml-2">→</span>
+                </div>
+            </a>
+
+            <a href="materiais.html" class="card-modulo bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 text-brand text-2xl">📋</div>
+                    <h3 class="text-xl font-bold text-brand mb-2">Lista de Compras e PDF's</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Baixe seus guias, listas de substituição e materiais de apoio.</p>
+                </div>
+                <div class="mt-6 flex items-center text-xs font-bold text-brand uppercase tracking-wider">
+                    Ver Materiais <span class="ml-2">→</span>
+                </div>
+            </a>
+
             </div>
-        </div>
     </main>
 
     <script>
-        // Preencher nome do aluno ao carregar
+        // Preencher nome do aluno
         document.addEventListener('DOMContentLoaded', () => {
-            const nome = localStorage.getItem('aluno_nome') || "Aluno";
-            document.getElementById('user-name').innerText = `Olá, ${nome}!`;
-            document.getElementById('user-initial').innerText = nome.charAt(0).toUpperCase();
+            const nome = localStorage.getItem('aluno_nome') || "Paciente";
+            document.getElementById('user-name').innerText = nome;
         });
 
-        // Função de Logout
+        // Logout com confirmação
         function fazerLogout() {
             Swal.fire({
-                title: 'Sair da conta?',
+                title: 'Deseja encerrar a sessão?',
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#481C1E',
-                confirmButtonText: 'Sim, sair',
-                cancelButtonText: 'Cancelar'
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sair agora',
+                cancelButtonText: 'Continuar'
             }).then((result) => {
                 if (result.isConfirmed) {
                     localStorage.clear();
