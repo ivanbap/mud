@@ -9,19 +9,50 @@
         .bg-brand { background-color: #481C1E; }
         .text-brand { color: #481C1E; }
         .border-brand { border-color: #481C1E; }
+        
         /* Estilo para a aula selecionada na lista */
-        .aula-item.active { background-color: #481C1E !important; color: white !important; }
-        .aula-item.active p { color: white !important; opacity: 0.8; }
+        .aula-item.active { 
+            background-color: #481C1E !important; 
+            color: white !important; 
+            border-color: #481C1E;
+        }
+        .aula-item.active p { color: white !important; }
+        .aula-item.active .tempo { color: rgba(255,255,255,0.7) !important; }
+
+        /* Container do vídeo mantendo proporção 16:9 sem cortes */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Scrollbar personalizada para a lista de aulas */
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #481C1E; border-radius: 10px; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans">
 
     <header class="bg-white shadow-sm border-b border-gray-200 p-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="../curso.html" class="text-brand font-bold text-lg flex items-center">
+            <a href="../curso.html" class="text-brand font-bold text-lg flex items-center hover:opacity-80 transition">
                 <span class="mr-2">←</span> Voltar ao Menu
             </a>
-            <h1 class="font-bold text-brand italic uppercase">Módulo 01: Mentalidade</h1>
+            <h1 class="font-bold text-brand italic uppercase tracking-wider">Módulo 01: Mentalidade</h1>
         </div>
     </header>
 
@@ -29,31 +60,38 @@
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
             
             <div class="lg:col-span-3">
-                <div class="bg-black rounded-2xl overflow-hidden shadow-2xl aspect-video relative">
-                    <div style="position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 15px; overflow: hidden; shadow: 0 10px 25px rgba(0,0,0,0.2);">
-                        <iframe 
-                            src="https://www.youtube.com/embed/ejUBhujqdHg?rel=0&modestbranding=1&showinfo=0" 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
+                <div class="video-container">
+                    <iframe 
+                        id="video-player"
+                        src="https://www.youtube.com/embed/ejUBhujqdHg?rel=0&modestbranding=1" 
+                        title="Player de Vídeo"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
-                <h2 id="video-title" class="text-2xl font-bold text-gray-900 mt-4">Selecione uma aula</h2>
+                <div class="mt-6">
+                    <h2 id="video-title" class="text-2xl font-bold text-gray-900">1. Boas vindas ao Método</h2>
+                    <p class="text-gray-500 mt-1">Módulo 01 • Aula Atual</p>
+                </div>
             </div>
 
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 lg:h-[70vh] overflow-y-auto">
-                <h3 class="text-lg font-bold text-brand mb-6">Conteúdos</h3>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 lg:h-[75vh] flex flex-col">
+                <h3 class="text-lg font-bold text-brand mb-4 border-b pb-4">Aulas do Módulo</h3>
                 
-                <div class="space-y-4">
-                    <div onclick="trocarVideo('ID_DO_VIDEO_1', this)" class="aula-item cursor-pointer p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition border border-gray-100">
-                        <p class="font-bold text-sm text-gray-800">1. Boas vindas ao Método</p>
-                        <p class="text-xs text-gray-500 mt-1">10 min</p>
+                <div class="space-y-3 overflow-y-auto custom-scroll pr-2" id="lista-aulas">
+                    <div onclick="trocarVideo('ejUBhujqdHg', this)" class="aula-item active cursor-pointer p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition border border-transparent">
+                        <p class="font-bold text-sm">1. Boas vindas ao Método</p>
+                        <p class="tempo text-xs text-gray-500 mt-1">10:00</p>
                     </div>
 
-                    <div onclick="trocarVideo('ID_DO_VIDEO_2', this)" class="aula-item cursor-pointer p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition border border-gray-100">
-                        <p class="font-bold text-sm text-gray-800">2. Como usar os materiais</p>
-                        <p class="text-xs text-gray-500 mt-1">5 min</p>
+                    <div onclick="trocarVideo('EKageUgZdUk', this)" class="aula-item cursor-pointer p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition border border-transparent">
+                        <p class="font-bold text-sm">2. Como usar os materiais</p>
+                        <p class="tempo text-xs text-gray-500 mt-1">05:30</p>
+                    </div>
+
+                    <div onclick="trocarVideo('ID_AQUI', this)" class="aula-item cursor-pointer p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition border border-transparent">
+                        <p class="font-bold text-sm">3. Mentalidade Blindada</p>
+                        <p class="tempo text-xs text-gray-500 mt-1">12:15</p>
                     </div>
                 </div>
             </div>
@@ -62,23 +100,25 @@
 
     <script>
         function trocarVideo(videoId, element) {
-            // 1. Muda o vídeo no iframe
             const iframe = document.getElementById('video-player');
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            
+            // Alterando o src mantendo os parâmetros de "limpeza" do YT
+            // Autoplay=1 faz o vídeo começar assim que o aluno clica na aula
+            iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&autoplay=1`;
 
-            // 2. Muda o título (opcional, pode criar um array de títulos)
-            document.getElementById('video-title').innerText = element.querySelector('p').innerText;
+            // Atualiza o título na tela
+            const novoTitulo = element.querySelector('p').innerText;
+            document.getElementById('video-title').innerText = novoTitulo;
 
-            // 3. Destaca o item clicado na lista
+            // Gerencia a classe 'active' para destacar a aula atual
             document.querySelectorAll('.aula-item').forEach(item => item.classList.remove('active'));
             element.classList.add('active');
-        }
 
-        // Carregar o primeiro vídeo automaticamente
-        document.addEventListener('DOMContentLoaded', () => {
-            const primeiroVideo = document.querySelector('.aula-item');
-            if (primeiroVideo) primeiroVideo.click();
-        });
+            // Scroll suave para o topo no mobile ao trocar de aula
+            if (window.innerWidth < 1024) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
     </script>
 </body>
 </html>
